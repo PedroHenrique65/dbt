@@ -1,0 +1,10 @@
+dbt_example:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: snappy-flash-460813-t7
+      dataset: "{{ env_var('DBT_DBNAME', 'dbt_dw') }}"  # <- este campo é obrigatório
+      threads: 4
+      keyfile: "C:\\Users\\USER\\.dbt\\snappy-flash-460813-t7-31966aa1a447.json"
