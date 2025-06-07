@@ -25,17 +25,18 @@ vars:
 
 models:
   dbt_example:
-    staging:
-      +schema: staging
-      materialized: table
-      tags: ['staging']
+    example:
+      staging:
+        +schema: staging
+        materialized: table
+        tags: ['staging']
     
     intermediate:
       materialized: ephemeral
       tags: ['intermediate']
 
     marts:
-      schema: marts
+      +schema: marts
       materialized: table
       tags: ['marts']
 

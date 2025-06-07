@@ -1,5 +1,10 @@
-WITH orders AS (
+{{ 
+    config(
+        tags=['comercial']
+    ) 
+}}
 
+WITH orders AS (
     SELECT
         order_id,
         customer_id,
@@ -14,7 +19,11 @@ WITH orders AS (
         ship_city,
         ship_region,
         ship_postal_code,
-        ship_country
+        ship_country,
+        case 
+            when shipped_date is null then 'envio pendente'
+            else 'enviado'
+        end as status_envio
     FROM {{ source('northwind', 'orders') }}
 
 )
